@@ -5,6 +5,7 @@
     <method name="GetProperties">
       <arg type="a{sv}" direction="out"/>
     </method>
+    <!--
     <method name="Register"/>
     <method name="Deregister"/>
     <method name="GetOperators">
@@ -13,12 +14,15 @@
     <method name="Scan">
       <arg type="a(oa{sv})" direction="out"/>
     </method>
+    -->
     <signal name="PropertyChanged">
       <arg type="s"/>
       <arg type="v"/>
     </signal>
+    <!--
     <signal name="OperatorsChanged">
       <arg type="a(oa{sv})"/>
     </signal>
+    -->
   </interface>
 </node>

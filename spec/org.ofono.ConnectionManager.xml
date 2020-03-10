@@ -11,6 +11,7 @@
       <arg name="property" type="s" direction="in"/>
       <arg name="value" type="v" direction="in"/>
     </method>
+    <!--
     <method name="AddContext">
       <arg name="type" type="s" direction="in"/>
       <arg name="path" type="o" direction="out"/>
@@ -19,6 +20,7 @@
       <arg name="path" type="o" direction="in"/>
     </method>
     <method name="DeactivateAll"/>
+    -->
     <method name="GetContexts">
       <arg name="contexts_with_properties" type="a(oa{sv})" direction="out"/>
     </method>
