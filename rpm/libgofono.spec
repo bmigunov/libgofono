@@ -4,11 +4,14 @@ Release: 0
 Summary: Ofono client library
 Group: Development/Libraries
 License: BSD
-URL: https://git.merproject.org/mer-core/libgofono
+URL: https://git.sailfishos.org/mer-core/libgofono
 Source: %{name}-%{version}.tar.bz2
-Requires:   libglibutil >= 1.0.28
+
+%define libglibutil_version 1.0.28
+
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libglibutil) >= 1.0.28
+BuildRequires:  pkgconfig(libglibutil) >= %{libglibutil_version}
+Requires:   libglibutil >= %{libglibutil_version}
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
@@ -27,11 +30,11 @@ This package contains the development library for %{name}.
 %setup -q
 
 %build
-make KEEP_SYMBOLS=1 release pkgconfig
+make LIBDIR=%{_libdir} KEEP_SYMBOLS=1 release pkgconfig
 
 %install
 rm -rf %{buildroot}
-make install-dev DESTDIR=%{buildroot}
+make LIBDIR=%{_libdir} DESTDIR=%{buildroot} install-dev
 
 %post -p /sbin/ldconfig
 
