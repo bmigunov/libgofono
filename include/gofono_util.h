@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2016 Jolla Ltd.
- * Contact: Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2020 Jolla Ltd.
+ * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -13,9 +13,9 @@
  *   2. Redistributions in binary form must reproduce the above copyright
  *      notice, this list of conditions and the following disclaimer in the
  *      documentation and/or other materials provided with the distribution.
- *   3. Neither the name of the Jolla Ltd nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
+ *   3. Neither the names of the copyright holders nor the names of its
+ *      contributors may be used to endorse or promote products derived
+ *      from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -38,6 +38,8 @@
 #include <gutil_macros.h>
 
 #define OFONO_NAME_INT_MAP_ENTRIES(a) a, G_N_ELEMENTS(a)
+
+G_BEGIN_DECLS
 
 typedef struct ofono_name_int_pair {
     const char* name;
@@ -68,6 +70,8 @@ ofono_country_code(
 
 void
 ofono_idle_pool_drain(void);
+
+G_END_DECLS
 
 #endif /* GOFONO_UTIL_H */
 
