@@ -1,3 +1,13 @@
+libgofono (2.0.10) unstable; urgency=low
+
+  * Respect arch specific lib dir
+  * Do not generate unused code
+  * Hide internal symbols
+  * Freshened up license
+  * Added 'remove_all_handlers' macros
+
+ -- Slava Monich <slava.monich@jolla.com>  Wed, 27 May 2020 12:23:36 +0300
+
 libgofono (2.0.9) unstable; urgency=low
 
   * Ignore GLib deprecation warnings.
