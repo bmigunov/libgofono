@@ -116,9 +116,12 @@ ofono_manager_remove_handler(
 
 void
 ofono_manager_remove_handlers(
-    OfonoManager* self,
+    OfonoManager* manager,
     gulong* ids,
     unsigned int count);
+
+#define ofono_manager_remove_all_handlers(manager, ids) /* Since 2.0.10 */ \
+    ofono_manager_remove_handlers(manager, ids, G_N_ELEMENTS(ids))
 
 G_END_DECLS
 

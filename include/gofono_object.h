@@ -160,6 +160,9 @@ ofono_object_remove_handlers(
     gulong* ids,
     unsigned int count);
 
+#define ofono_object_remove_all_handlers(object, ids) /* Since 2.0.10 */ \
+    ofono_object_remove_handlers(object, ids, G_N_ELEMENTS(ids))
+
 G_END_DECLS
 
 #endif /* GOFONO_OBJECT_H */

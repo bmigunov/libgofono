@@ -180,6 +180,11 @@ OFONO_INLINE void
 ofono_simmgr_remove_handlers(OfonoSimMgr* sim, gulong* ids, guint n)
     { ofono_object_remove_handlers(ofono_simmgr_object(sim), ids, n); }
 
+/* Macros */
+
+#define ofono_simmgr_remove_all_handlers(sim, ids) /* Since 2.0.10 */ \
+    ofono_simmgr_remove_handlers(sim, ids, G_N_ELEMENTS(ids))
+
 G_END_DECLS
 
 #endif /* GOFONO_SIMMGR_H */

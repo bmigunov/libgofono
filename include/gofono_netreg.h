@@ -220,6 +220,11 @@ OFONO_INLINE void
 ofono_netreg_remove_handlers(OfonoNetReg* netreg, gulong* ids, guint n)
     { ofono_object_remove_handlers(ofono_netreg_object(netreg), ids, n); }
 
+/* Macros */
+
+#define ofono_netreg_remove_all_handlers(netreg, ids) /* Since 2.0.10 */ \
+    ofono_netreg_remove_handlers(netreg, ids, G_N_ELEMENTS(ids))
+
 G_END_DECLS
 
 #endif /* GOFONO_NETREG_H */

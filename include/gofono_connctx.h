@@ -319,6 +319,11 @@ OFONO_INLINE void
 ofono_connctx_remove_handlers(OfonoConnCtx* ctx, gulong* ids, guint n)
     { ofono_object_remove_handlers(ofono_connctx_object(ctx), ids, n); }
 
+/* Macros */
+
+#define ofono_connctx_remove_all_handlers(ctx, ids) /* Since 2.0.10 */ \
+    ofono_connctx_remove_handlers(ctx, ids, G_N_ELEMENTS(ids))
+
 G_END_DECLS
 
 #endif /* GOFONO_CONNCTX_H */

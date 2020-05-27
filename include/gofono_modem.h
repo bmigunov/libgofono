@@ -200,6 +200,11 @@ OFONO_INLINE void
 ofono_modem_remove_handlers(OfonoModem* modem, gulong* ids, guint n)
     { ofono_object_remove_handlers(ofono_modem_object(modem), ids, n); }
 
+/* Macros */
+
+#define ofono_modem_remove_all_handlers(modem, ids) /* Since 2.0.10 */ \
+    ofono_modem_remove_handlers(modem, ids, G_N_ELEMENTS(ids))
+
 G_END_DECLS
 
 #endif /* GOFONO_MODEM_H */
