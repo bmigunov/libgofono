@@ -11,6 +11,7 @@
       <arg name="property" type="s" direction="in"/>
       <arg name="value" type="v" direction="in"/>
     </method>
+    <!--
     <method name="ChangePin">
       <arg name="type" type="s" direction="in"/>
       <arg name="oldpin" type="s" direction="in"/>
@@ -37,6 +38,7 @@
       <arg name="id" type="y" direction="in"/>
       <arg name="icon" type="ay" direction="out"/>
     </method>
+    -->
     <signal name="PropertyChanged">
       <arg name="name" type="s"/>
       <arg name="value" type="v"/>

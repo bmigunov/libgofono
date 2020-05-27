@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2016 Jolla Ltd.
- * Contact: Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2016-2020 Jolla Ltd.
+ * Copyright (C) 2016-2020 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -13,9 +13,9 @@
  *   2. Redistributions in binary form must reproduce the above copyright
  *      notice, this list of conditions and the following disclaimer in the
  *      documentation and/or other materials provided with the distribution.
- *   3. Neither the name of the Jolla Ltd nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
+ *   3. Neither the names of the copyright holders nor the names of its
+ *      contributors may be used to endorse or promote products derived
+ *      from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -34,8 +34,6 @@
 #define GOFONO_MANAGER_PROXY_H
 
 #include "gofono_types.h"
-
-G_BEGIN_DECLS
 
 typedef struct ofono_manager_proxy_priv OfonoManagerProxyPriv;
 
@@ -60,32 +58,35 @@ void
     void* arg);
 
 OfonoManagerProxy*
-ofono_manager_proxy_new(void);
+ofono_manager_proxy_new(void)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_manager_proxy_has_modem(
     OfonoManagerProxy* proxy,
-    const char* path);
+    const char* path)
+    G_GNUC_INTERNAL;
 
 gulong
 ofono_manager_proxy_add_valid_changed_handler(
     OfonoManagerProxy* proxy,
     OfonoManagerProxyHandler fn,
-    void* arg);
+    void* arg)
+    G_GNUC_INTERNAL;
 
 gulong
 ofono_manager_proxy_add_modem_added_handler(
     OfonoManagerProxy* proxy,
     OfonoManagerProxyModemHandler fn,
-    void* arg);
+    void* arg)
+    G_GNUC_INTERNAL;
 
 gulong
 ofono_manager_proxy_add_modem_removed_handler(
     OfonoManagerProxy* proxy,
     OfonoManagerProxyModemHandler fn,
-    void* arg);
-
-G_END_DECLS
+    void* arg)
+    G_GNUC_INTERNAL;
 
 #endif /* GOFONO_MANAGER_PROXY_H */
 

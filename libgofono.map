@@ -1,0 +1,7 @@
+{
+    global:
+        ofono_*;
+        gofono_log;
+    local:
+        *;
+};

@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2019 Jolla Ltd.
- * Copyright (C) 2014-2019 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2020 Jolla Ltd.
+ * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -143,138 +143,164 @@ GType ofono_object_get_type();
 
 void
 ofono_class_initialize(
-    OfonoObjectClass* klass);
+    OfonoObjectClass* klass)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_initialize(
     OfonoObject* object,
     const char* intf,
-    const char* path);
+    const char* path)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_get_properties(
-    OfonoObject* self);
+    OfonoObject* self)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_update_ready(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_update_valid(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 GDBusConnection*
 ofono_object_bus(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 const char*
 ofono_object_name(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 OFONO_OBJECT_PROXY*
 ofono_object_proxy(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 OfonoObjectPendingCall*
 ofono_object_pending_call_new(
     OfonoObject* object,
     OfonoObjectProxyCallFinishedCallback finished,
     OfonoObjectCallFinishedCallback callback,
-    void* arg);
+    void* arg)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_pending_call_finished(
     GObject* proxy,
     GAsyncResult* result,
-    gpointer data);
+    gpointer data)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_query_properties(
     OfonoObject* object,
-    gboolean force_retry);
+    gboolean force_retry)
+    G_GNUC_INTERNAL;
 
 void
 ofono_object_reset_properties(
-    OfonoObject* object);
+    OfonoObject* object)
+    G_GNUC_INTERNAL;
 
 /* Properties */
 
 GVariant*
 ofono_object_property_boolean_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_boolean_apply(
     OfonoObject* object,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_byte_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_byte_apply(
     OfonoObject* object,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_uint16_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_uint16_apply(
     OfonoObject* object,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_uint32_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_uint32_apply(
     OfonoObject* object,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_enum_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_enum_apply(
     OfonoObject* self,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_string_array_value(
     OfonoObject* object,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_string_array_apply(
     OfonoObject* object,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 GVariant*
 ofono_object_property_string_value(
     OfonoObject* self,
-    const OfonoObjectProperty* prop);
+    const OfonoObjectProperty* prop)
+    G_GNUC_INTERNAL;
 
 gboolean
 ofono_object_property_string_apply(
     OfonoObject* self,
     const OfonoObjectProperty* prop,
-    GVariant* value);
+    GVariant* value)
+    G_GNUC_INTERNAL;
 
 OFONO_INLINE void
 ofono_object_emit_property_changed_signal(OfonoObject* object,
