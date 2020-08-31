@@ -1,3 +1,9 @@
+libgofono (2.0.11) unstable; urgency=low
+
+  * Make library executable on RPM based systems
+
+ -- Slava Monich <slava.monich@jolla.com>  Mon, 31 Aug 2020 21:47:32 +0300
+
 libgofono (2.0.10) unstable; urgency=low
 
   * Respect arch specific lib dir
