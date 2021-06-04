@@ -1,3 +1,10 @@
+libgofono (2.0.12) unstable; urgency=low
+
+  * Support for ProxyCSCF connection context property
+  * Made ofono_object_get_properties() exported again
+
+ -- Slava Monich <slava.monich@jolla.com>  Sat, 05 Jun 2021 00:03:16 +0300
+
 libgofono (2.0.11) unstable; urgency=low
 
   * Make library executable on RPM based systems
