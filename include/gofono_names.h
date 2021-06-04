@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2019 Jolla Ltd.
- * Copyright (C) 2014-2019 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -112,6 +112,7 @@
 #define OFONO_CONNCTX_SETTINGS_GATEWAY            "Gateway"
 #define OFONO_CONNCTX_SETTINGS_PREFIX_LENGTH      "PrefixLength"
 #define OFONO_CONNCTX_SETTINGS_DNS                "DomainNameServers"
+#define OFONO_CONNCTX_SETTINGS_PCSCF              "ProxyCSCF" /* Since 2.0.12 */
 
 /* org.ofono.NetworkRegistration */
 #define OFONO_NETREG_PROPERTY_STATUS              "Status"
