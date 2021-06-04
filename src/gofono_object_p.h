@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -151,11 +151,6 @@ ofono_object_initialize(
     OfonoObject* object,
     const char* intf,
     const char* path)
-    G_GNUC_INTERNAL;
-
-GVariant*
-ofono_object_get_properties(
-    OfonoObject* self)
     G_GNUC_INTERNAL;
 
 void
