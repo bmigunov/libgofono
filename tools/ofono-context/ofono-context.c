@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -93,16 +93,16 @@ typedef struct action_str {
     char* value;
 } ActionStr;
 
-G_INLINE_FUNC ActionSimple* action_simple_cast(Action* action)
+OFONO_INLINE ActionSimple* action_simple_cast(Action* action)
     { return G_CAST(action, ActionSimple, action); }
 
-G_INLINE_FUNC ActionEnum* action_enum_cast(Action* action)
+OFONO_INLINE ActionEnum* action_enum_cast(Action* action)
     { return G_CAST(action, ActionEnum, action); }
 
-G_INLINE_FUNC ActionStr* action_str_cast(Action* action)
+OFONO_INLINE ActionStr* action_str_cast(Action* action)
     { return G_CAST(action, ActionStr, action); }
 
-G_INLINE_FUNC gboolean app_add_action(App* app, Action* action)
+OFONO_INLINE gboolean app_add_action(App* app, Action* action)
     { app->actions = g_slist_append(app->actions, action); return TRUE; }
 
 static
