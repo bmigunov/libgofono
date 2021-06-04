@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -126,7 +126,7 @@ app_signal(
     GMainLoop* loop = arg;
     GINFO("Caught signal, shutting down...");
     g_idle_add((GSourceFunc)g_main_loop_quit, loop);
-    return FALSE;
+    return G_SOURCE_CONTINUE;
 }
 
 static
