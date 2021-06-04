@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -70,6 +70,8 @@ typedef struct ofono_connctx_settings {
     const char* gateway;                        /* Gateway */
     char* const* dns;                           /* DomainNameServers */
     guint prefix;                               /* PrefixLength */
+    /* Since 2.0.12 */
+    char* const* pcscf;                         /* ProxyCSCF */
 } OfonoConnCtxSettings;
 
 struct ofono_connctx {

@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2019 Jolla Ltd.
- * Copyright (C) 2014-2019 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  * Copyright (C) 2019 Open Mobile Platform LLC.
  *
  * You may use this file under the terms of BSD license as follows:
@@ -15,8 +15,8 @@
  *      notice, this list of conditions and the following disclaimer in the
  *      documentation and/or other materials provided with the distribution.
  *   3. Neither the names of the copyright holders nor the names of its
- *      contributors may be used to endorse or promote products derived from
- *      this software without specific prior written permission.
+ *      contributors may be used to endorse or promote products derived
+ *      from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -59,6 +59,7 @@ typedef struct ofono_connctx_settings_priv {
     char* netmask;
     char* gateway;
     char** dns;
+    char** pcscf;
 } OfonoConnCtxSettingsPriv;
 
 enum modem_event {
@@ -230,9 +231,39 @@ ofono_connctx_settings_clear(
     g_free(settings->netmask);
     g_free(settings->gateway);
     g_strfreev(settings->dns);
+    g_strfreev(settings->pcscf);
     memset(settings, 0, sizeof(*settings));
     ofono_connctx_settings_init(settings);
 };
+
+static
+char**
+ofono_connctx_settings_decode_array(
+    GVariant* dict,
+    const char* key)
+{
+    char** strv = NULL;
+    GVariant* value = g_variant_lookup_value(dict, key, G_VARIANT_TYPE_ARRAY);
+
+    if (value) {
+        const int n = g_variant_n_children(value);
+
+        if (n > 0) {
+            int i;
+
+            strv = g_new(char*, n+1);
+            for (i=0; i<n; i++) {
+                GVariant* string = g_variant_get_child_value(value, i);
+                strv[i] = g_strdup(g_variant_get_string(string, NULL));
+                g_variant_unref(string);
+            }
+            strv[i] = NULL;
+        }
+        g_variant_unref(value);
+    }
+
+    return strv;
+}
 
 static
 gboolean
@@ -240,7 +271,6 @@ ofono_connctx_settings_decode(
     OfonoConnCtxSettingsPriv* settings,
     GVariant* dict)
 {
-    GVariant* value;
     const char* s;
     guchar y;
     gboolean empty = TRUE;
@@ -300,22 +330,19 @@ ofono_connctx_settings_decode(
     }
 
     /* DomainNameServers */
-    value = g_variant_lookup_value(dict, OFONO_CONNCTX_SETTINGS_DNS,
-        G_VARIANT_TYPE_ARRAY);
-    if (value) {
-        const int n = g_variant_n_children(value);
-        if (n > 0) {
-            int i;
-            settings->pub.dns = settings->dns = g_new(char*, n+1);
-            for (i=0; i<n; i++) {
-                GVariant* string = g_variant_get_child_value(value, i);
-                settings->dns[i] = g_strdup(g_variant_get_string(string, NULL));
-                g_variant_unref(string);
-            }
-            settings->dns[i] = NULL;
-            empty = FALSE;
-        }
-        g_variant_unref(value);
+    settings->dns = ofono_connctx_settings_decode_array(dict,
+        OFONO_CONNCTX_SETTINGS_DNS);
+    if (settings->dns) {
+        settings->pub.dns = settings->dns;
+        empty = FALSE;
+    }
+
+    /* ProxyCSCF */
+    settings->pcscf = ofono_connctx_settings_decode_array(dict,
+        OFONO_CONNCTX_SETTINGS_PCSCF);
+    if (settings->pcscf) {
+        settings->pub.pcscf = settings->pcscf;
+        empty = FALSE;
     }
 
     return !empty;
@@ -1030,6 +1057,16 @@ ofono_connctx_property_settings_apply(
             char* dns = g_strjoinv(" ", decoded.dns);
             GDEBUG("%s.%s: %s", prop->name, OFONO_CONNCTX_SETTINGS_DNS, dns);
             g_free(dns);
+        }
+    }
+
+    if (!gutil_strv_equal(old.pcscf, decoded.pcscf)) {
+        changed = TRUE;
+        if (GLOG_ENABLED(GLOG_LEVEL_DEBUG) && decoded.pcscf) {
+            char* pcscf = g_strjoinv(" ", decoded.pcscf);
+            GDEBUG("%s.%s: %s", prop->name, OFONO_CONNCTX_SETTINGS_PCSCF,
+                pcscf);
+            g_free(pcscf);
         }
     }
 
