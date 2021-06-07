@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -108,14 +108,6 @@ ofono_connmgr_proxy(
     OfonoConnMgr* self)
 {
     return ofono_object_proxy(ofono_connmgr_object(self));
-}
-
-OFONO_INLINE
-void
-ofono_connmgr_update_ready(
-    OfonoConnMgr* self)
-{
-    ofono_object_update_ready(ofono_connmgr_object(self));
 }
 
 OFONO_INLINE
@@ -307,7 +299,7 @@ ofono_connmgr_get_contexts_finished(
         if (ofono_error_is_generic_timeout(error)) {
             GWARN("%s.GetContexts - %s", OFONO_CONNMGR_INTERFACE_NAME,
                 GERRMSG(error));
-            GDEBUG("Retrying %s.GetContexts", OFONO_MANAGER_INTERFACE_NAME);
+            GDEBUG("Retrying %s.GetContexts", OFONO_CONNMGR_INTERFACE_NAME);
             org_ofono_connection_manager_call_get_contexts(proxy,
                 call->cancel, ofono_connmgr_get_contexts_finished, call);
             call = NULL;
@@ -415,7 +407,7 @@ ofono_connmgr_new(
         ofono_modem_interface_initialize(intf, ifname, path);
         ofono_modem_set_interface(modem, intf);
         connmgr->priv->name = ofono_object_name(&intf->object);
-        ofono_connmgr_update_ready(connmgr);
+        ofono_object_update_ready(&intf->object);
         GASSERT(!ofono_connmgr_proxy(connmgr));
         GASSERT(intf->modem == modem);
     }
