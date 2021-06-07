@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -46,6 +46,11 @@ typedef struct ofono_object {
     const char* path;
     gboolean valid;
 } OfonoObject;
+
+GType ofono_object_get_type();  /* Public since 2.1.0 */
+#define OFONO_TYPE_OBJECT (ofono_object_get_type())
+#define OFONO_OBJECT(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), \
+        OFONO_TYPE_OBJECT, OfonoObject))
 
 typedef
 void

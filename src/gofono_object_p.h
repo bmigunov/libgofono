@@ -118,10 +118,6 @@ struct ofono_object_property {
     const void* ext;
 };
 
-GType ofono_object_get_type();
-#define OFONO_TYPE_OBJECT (ofono_object_get_type())
-#define OFONO_OBJECT(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), \
-        OFONO_TYPE_OBJECT, OfonoObject))
 #define OFONO_OBJECT_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), \
         OFONO_TYPE_OBJECT, OfonoObjectClass))
 #define OFONO_OBJECT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), \
