@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2021 Jolla Ltd.
- * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2021 Jolla Ltd.
+ * Copyright (C) 2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -30,43 +30,30 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GOFONO_TYPES_H
-#define GOFONO_TYPES_H
+#ifndef GOFONO_SIMAPP_PRIVATE_H
+#define GOFONO_SIMAPP_PRIVATE_H
 
-#include <gutil_types.h>
-#include <gio/gio.h>
+#include "gofono_simapp.h"
+#include "gofono_object_p.h"
 
-#define OFONO_LOG_MODULE gofono_log
+#define OFONO_SIMAPP_TYPE_USIM_S "Umts"
+#define OFONO_SIMAPP_TYPE_ISIM_S "Ims"
 
-G_BEGIN_DECLS
+typedef OfonoObjectClass OfonoSimAppClass;
 
-typedef struct ofono_connctx            OfonoConnCtx;
-typedef struct ofono_connmgr            OfonoConnMgr;
-typedef struct ofono_manager            OfonoManager;
-typedef struct ofono_modem              OfonoModem;
-typedef struct ofono_netreg             OfonoNetReg;
-typedef struct ofono_simmgr             OfonoSimMgr;
-typedef struct ofono_simapp             OfonoSimApp;       /* Since 2.1.0 */
-typedef struct ofono_simapp_isim        OfonoSimAppISim;   /* Since 2.1.0 */
-typedef struct ofono_simapp_usim        OfonoSimAppUSim;   /* Since 2.1.0 */
-typedef struct ofono_simauth            OfonoSimAuth;      /* Since 2.1.0 */
+OfonoSimAppUSim*
+ofono_simapp_usim_new(
+    const char* path)
+    G_GNUC_INTERNAL;
 
-typedef enum ofono_connctx_type {
-    OFONO_CONNCTX_TYPE_UNKNOWN = -1,
-    OFONO_CONNCTX_TYPE_NONE,
-    OFONO_CONNCTX_TYPE_INTERNET,        /* internet */
-    OFONO_CONNCTX_TYPE_MMS,             /* mms */
-    OFONO_CONNCTX_TYPE_WAP,             /* wap */
-    OFONO_CONNCTX_TYPE_IMS              /* ims */
-} OFONO_CONNCTX_TYPE;
+void
+ofono_simapp_initialize(
+    OfonoSimApp* app,
+    const char* intf,
+    const char* path)
+    G_GNUC_INTERNAL;
 
-extern GLogModule OFONO_LOG_MODULE;
-
-#define OFONO_INLINE static inline
-
-G_END_DECLS
-
-#endif /* GOFONO_TYPES_H */
+#endif /* GOFONO_SIMAPP_PRIVATE_H */
 
 /*
  * Local Variables:

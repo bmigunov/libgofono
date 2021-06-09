@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2019 Jolla Ltd.
- * Copyright (C) 2014-2019 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2021 Jolla Ltd.
+ * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -380,12 +380,15 @@ ofono_object_proxy_created(
     GDBusProxy* proxy)
 {
     OfonoObjectPriv* priv = self->priv;
+    const char* signal_name = PROXY_SIGNAL_PROPERTY_CHANGED_NAME;
+
     GASSERT(!priv->proxy);
     g_object_ref(priv->proxy = proxy);
     GASSERT(!priv->property_changed_signal_id);
-    priv->property_changed_signal_id = g_signal_connect(proxy,
-        PROXY_SIGNAL_PROPERTY_CHANGED_NAME,
-        G_CALLBACK(ofono_object_property_changed), self);
+    if (g_signal_lookup(signal_name, G_OBJECT_TYPE(proxy))) {
+        priv->property_changed_signal_id = g_signal_connect(proxy,
+            signal_name, G_CALLBACK(ofono_object_property_changed), self);
+    }
     ofono_object_update_ready(self);
     ofono_object_update_valid(self);
 }
@@ -773,7 +776,6 @@ ofono_object_query_properties(
                 GASSERT(call->fn_finish);
 
                 /* Property change handler must be set up by now */
-                GASSERT(priv->property_changed_signal_id);
                 ofono_object_cancel_get_properties(self);
                 priv->get_properties_ok = FALSE;
                 priv->get_properties_pending = call;
@@ -1006,11 +1008,10 @@ ofono_class_initialize(
 {
     guint i;
     OfonoObjectProperty* property;
-    for (i=0, property=klass->properties;
-         i<klass->nproperties;
+    for (i = 0, property = klass->properties;
+         i < klass->nproperties;
          i++, property++) {
-        if (property->signal_name) {
-            GASSERT(!property->signal);
+        if (property->signal_name && !property->signal) {
             property->signal = g_signal_new(property->signal_name,
                 G_OBJECT_CLASS_TYPE(klass), G_SIGNAL_RUN_FIRST,
                 0, NULL, NULL, NULL, G_TYPE_NONE, 0);

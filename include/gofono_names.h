@@ -40,6 +40,7 @@
 #define OFONO_MANAGER_INTERFACE_NAME              OFONO_("Manager")
 #define OFONO_MODEM_INTERFACE_NAME                OFONO_("Modem")
 #define OFONO_SIMMGR_INTERFACE_NAME               OFONO_("SimManager")
+#define OFONO_SIMAUTH_INTERFACE_NAME              OFONO_("SimAuthentication")
 #define OFONO_CONNMGR_INTERFACE_NAME              OFONO_("ConnectionManager")
 #define OFONO_CONNCTX_INTERFACE_NAME              OFONO_("ConnectionContext")
 #define OFONO_NETREG_INTERFACE_NAME               OFONO_("NetworkRegistration")
@@ -63,6 +64,9 @@
 #define OFONO_SIM_TOOLKIT_INTERFACE_NAME          OFONO_("SimToolkit")
 #define OFONO_TEXT_TELEPHONY_INTERFACE_NAME       OFONO_("TextTelephony")
 #define OFONO_VOICECALL_MANAGER_INTERFACE_NAME    OFONO_("VoiceCallManager")
+                                                  /* Since 2.1.0 */
+#define OFONO_ISIM_APPLICATION_INTERFACE_NAME     OFONO_("ISimApplication")
+#define OFONO_USIM_APPLICATION_INTERFACE_NAME     OFONO_("USimApplication")
 
 /* org.ofono.Modem */
 #define OFONO_MODEM_PROPERTY_POWERED              "Powered"
@@ -77,6 +81,14 @@
 #define OFONO_MODEM_PROPERTY_TYPE                 "Type"
 #define OFONO_MODEM_PROPERTY_FEATURES             "Features"
 #define OFONO_MODEM_PROPERTY_INTERFACES           "Interfaces"
+
+/* org.ofono.SimAuthentication */
+#define OFONO_SIMAUTH_PROPERTY_IDENTITY           "NetworkAccessIdentity"
+
+/* org.ofono.USimApplication */
+/* org.ofono.ISimApplication */
+#define OFONO_SIMAPP_PROPERTY_TYPE                "Type" /* Since 2.1.0 */
+#define OFONO_SIMAPP_PROPERTY_NAME                "Name" /* Since 2.1.0 */
 
 /* org.ofono.SimManager */
 #define OFONO_SIMMGR_PROPERTY_PRESENT             "Present"

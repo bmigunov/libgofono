@@ -48,6 +48,9 @@ SRC = \
   gofono_modemintf.c \
   gofono_netreg.c \
   gofono_object.c \
+  gofono_simapp.c \
+  gofono_simapp_usim.c \
+  gofono_simauth.c \
   gofono_simmgr.c \
   gofono_util.c
 GEN_SRC = \
@@ -56,7 +59,9 @@ GEN_SRC = \
   org.ofono.Manager.c \
   org.ofono.Modem.c \
   org.ofono.NetworkRegistration.c \
-  org.ofono.SimManager.c
+  org.ofono.SimAuthentication.c \
+  org.ofono.SimManager.c \
+  org.ofono.USimApplication.c
 
 #
 # Directories

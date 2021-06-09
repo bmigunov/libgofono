@@ -6,3 +6,4 @@ all:
 	@$(MAKE) -C ofono-modem $*
 	@$(MAKE) -C ofono-monitor $*
 	@$(MAKE) -C ofono-sim $*
+	@$(MAKE) -C ofono-simauth $*
