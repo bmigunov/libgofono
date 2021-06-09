@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2021 Jolla Ltd.
- * Copyright (C) 2014-2021 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2021 Jolla Ltd.
+ * Copyright (C) 2021 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -30,43 +30,69 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GOFONO_TYPES_H
-#define GOFONO_TYPES_H
+#ifndef GOFONO_SIMAPP_USIM_H
+#define GOFONO_SIMAPP_USIM_H
 
-#include <gutil_types.h>
-#include <gio/gio.h>
+/* This file exists since 2.1.0 */
 
-#define OFONO_LOG_MODULE gofono_log
+#include "gofono_simapp.h"
 
 G_BEGIN_DECLS
 
-typedef struct ofono_connctx            OfonoConnCtx;
-typedef struct ofono_connmgr            OfonoConnMgr;
-typedef struct ofono_manager            OfonoManager;
-typedef struct ofono_modem              OfonoModem;
-typedef struct ofono_netreg             OfonoNetReg;
-typedef struct ofono_simmgr             OfonoSimMgr;
-typedef struct ofono_simapp             OfonoSimApp;       /* Since 2.1.0 */
-typedef struct ofono_simapp_isim        OfonoSimAppISim;   /* Since 2.1.0 */
-typedef struct ofono_simapp_usim        OfonoSimAppUSim;   /* Since 2.1.0 */
-typedef struct ofono_simauth            OfonoSimAuth;      /* Since 2.1.0 */
+typedef struct ofono_simapp_usim_priv OfonoSimAppUSimPriv;
 
-typedef enum ofono_connctx_type {
-    OFONO_CONNCTX_TYPE_UNKNOWN = -1,
-    OFONO_CONNCTX_TYPE_NONE,
-    OFONO_CONNCTX_TYPE_INTERNET,        /* internet */
-    OFONO_CONNCTX_TYPE_MMS,             /* mms */
-    OFONO_CONNCTX_TYPE_WAP,             /* wap */
-    OFONO_CONNCTX_TYPE_IMS              /* ims */
-} OFONO_CONNCTX_TYPE;
+struct ofono_simapp_usim {
+    OfonoSimApp app;
+    OfonoSimAppUSimPriv* priv;
+};
 
-extern GLogModule OFONO_LOG_MODULE;
+GType ofono_simapp_usim_get_type(void);
+#define OFONO_TYPE_SIMAPP_USIM (ofono_simapp_usim_get_type())
+#define OFONO_SIMAPP_USIM(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), \
+        OFONO_TYPE_SIMAPP_USIM, OfonoSimAppUSim))
 
-#define OFONO_INLINE static inline
+typedef
+void
+(*OfonoSimAppUSimAuthenticateComplete)(
+    OfonoSimAppUSim* usim,
+    GHashTable* result, /* char* => GBytes* map */
+    const GError* error,
+    void* arg);
+
+OfonoSimAppUSim*
+ofono_simapp_usim_ref(
+    OfonoSimAppUSim* usim);
+
+void
+ofono_simapp_usim_unref(
+    OfonoSimAppUSim* usim);
+
+GCancellable*
+ofono_simapp_usim_umts_authenticate(
+    OfonoSimAppUSim* usim,
+    GBytes* rand,
+    GBytes* autn,
+    OfonoSimAppUSimAuthenticateComplete complete,
+    GDestroyNotify destroy,
+    void* data);
+
+/* Inline wrappers */
+
+OFONO_INLINE OfonoObject*
+ofono_simapp_usim_object(OfonoSimAppUSim* usim)
+    { return G_LIKELY(usim) ? ofono_simapp_object(&usim->app) : NULL; }
+
+OFONO_INLINE const char*
+ofono_simapp_usim_path(const OfonoSimAppUSim* usim)
+    { return G_LIKELY(usim) ? ofono_simapp_path(&usim->app) : NULL; }
+
+OFONO_INLINE gboolean
+ofono_simapp_usim_valid(const OfonoSimAppUSim* usim)
+    { return G_LIKELY(usim) && ofono_simapp_valid(&usim->app); }
 
 G_END_DECLS
 
-#endif /* GOFONO_TYPES_H */
+#endif /* GOFONO_SIMAPP_H */
 
 /*
  * Local Variables:
