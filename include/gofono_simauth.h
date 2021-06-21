@@ -80,7 +80,7 @@ gulong
 ofono_simauth_add_valid_changed_handler(
     OfonoSimAuth* auth,
     OfonoSimAuthHandler handler,
-    void* arg);
+    void* arg); /* Since 2.1.1 */
 
 void
 ofono_simauth_remove_handler(

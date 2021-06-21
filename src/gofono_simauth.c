@@ -330,13 +330,13 @@ ofono_simauth_unref(
 }
 
 gulong
-ofono_simapp_add_valid_changed_handler(
-    OfonoSimApp* self,
-    OfonoSimAppHandler handler,
-    void* arg)
+ofono_simauth_add_valid_changed_handler(
+    OfonoSimAuth* self,
+    OfonoSimAuthHandler handler,
+    void* arg) /* Since 2.1.1 */
 {
     return G_LIKELY(self) ? ofono_object_add_valid_changed_handler(
-        ofono_simapp_object(self), (OfonoObjectHandler) handler, arg) : 0;
+        ofono_simauth_object(self), (OfonoObjectHandler) handler, arg) : 0;
 }
 
 void

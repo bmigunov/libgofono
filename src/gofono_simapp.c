@@ -83,6 +83,16 @@ ofono_simapp_unref(
     }
 }
 
+gulong
+ofono_simapp_add_valid_changed_handler(
+    OfonoSimApp* self,
+    OfonoSimAppHandler handler,
+    void* arg)
+{
+    return G_LIKELY(self) ? ofono_object_add_valid_changed_handler(
+        ofono_simapp_object(self), (OfonoObjectHandler) handler, arg) : 0;
+}
+
 void
 ofono_simapp_remove_handler(
     OfonoSimApp* self,
