@@ -1,3 +1,10 @@
+libgofono (2.1.1) unstable; urgency=low
+
+  * Implemented ofono_simauth_add_valid_changed_handler()
+  * Removed unused OfonoSimAuthPropertyHandler type
+
+ -- Slava Monich <slava.monich@jolla.com>  Mon, 21 Jun 2021 19:34:24 +0300
+
 libgofono (2.1.0) unstable; urgency=low
 
   * Initial support for SIM authentication API

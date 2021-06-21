@@ -1,10 +1,10 @@
 Name: libgofono
 
-Version: 2.1.0
+Version: 2.1.1
 Release: 0
 Summary: Ofono client library
 License: BSD
-URL: https://git.sailfishos.org/mer-core/libgofono
+URL: https://github.com/sailfishos/libgofono
 Source: %{name}-%{version}.tar.bz2
 
 %define libglibutil_version 1.0.49
