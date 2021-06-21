@@ -60,14 +60,6 @@ void
     OfonoSimAuth* sender,
     void* arg);
 
-typedef
-void
-(*OfonoSimAuthPropertyHandler)(
-    OfonoSimAuth* sender,
-    const char* name,
-    GVariant* value,
-    void* arg);
-
 OfonoSimAuth*
 ofono_simauth_new(
     const char* path);
