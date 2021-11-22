@@ -42,6 +42,7 @@ make LIBDIR=%{_libdir} DESTDIR=%{buildroot} install-dev
 
 %files
 %defattr(-,root,root,-)
+%license LICENSE
 %{_libdir}/%{name}.so.*
 
 %files devel
