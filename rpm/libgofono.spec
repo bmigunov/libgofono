@@ -1,6 +1,6 @@
 Name: libgofono
 
-Version: 2.1.1
+Version: 2.1.3
 Release: 0
 Summary: Ofono client library
 License: BSD

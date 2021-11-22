@@ -1,3 +1,9 @@
+libgofono (2.1.3) unstable; urgency=low
+
+  * Housekeeping
+
+ -- Slava Monich <slava.monich@jolla.com>  Tue, 23 Nov 2021 00:15:19 +0200
+
 libgofono (2.1.1) unstable; urgency=low
 
   * Implemented ofono_simauth_add_valid_changed_handler()
