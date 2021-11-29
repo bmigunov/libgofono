@@ -90,7 +90,7 @@ FULL_CFLAGS = $(BASE_FLAGS) $(DEFINES) $(WARNINGS) $(INCLUDES) -MMD -MP \
 LDFLAGS = $(BASE_FLAGS) -shared -Wl,-soname=$(LIB_SONAME) \
   -Wl,--version-script=$(LIB_NAME).map $(shell pkg-config --libs $(PKGS))
 DEBUG_FLAGS = -g
-RELEASE_FLAGS =
+RELEASE_FLAGS = -flto
 
 KEEP_SYMBOLS ?= 0
 ifneq ($(KEEP_SYMBOLS),0)
