@@ -65,6 +65,7 @@ typedef enum ofono_netreg_tech {
     OFONO_NETREG_TECH_UMTS,             /* umts */
     OFONO_NETREG_TECH_HSPA,             /* hspa */
     OFONO_NETREG_TECH_LTE,              /* lte */
+    OFONO_NETREG_TECH_NR,               /* nr */
 } OFONO_NETREG_TECH;
 
 struct ofono_netreg {
