@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2020 Jolla Ltd.
- * Copyright (C) 2014-2020 Slava Monich <slava.monich@jolla.com>
+ * Copyright (C) 2014-2022 Jolla Ltd.
+ * Copyright (C) 2014-2022 Slava Monich <slava.monich@jolla.com>
  *
  * You may use this file under the terms of BSD license as follows:
  *
@@ -65,7 +65,8 @@ typedef enum ofono_netreg_tech {
     OFONO_NETREG_TECH_UMTS,             /* umts */
     OFONO_NETREG_TECH_HSPA,             /* hspa */
     OFONO_NETREG_TECH_LTE,              /* lte */
-    OFONO_NETREG_TECH_NR,               /* nr */
+    /* Since  2.1.5 */
+    OFONO_NETREG_TECH_NR                /* nr */
 } OFONO_NETREG_TECH;
 
 struct ofono_netreg {
