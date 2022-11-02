@@ -94,7 +94,8 @@ static const OfonoNameIntPair ofono_netreg_tech_values[] = {
     { "edge", OFONO_NETREG_TECH_EDGE },
     { "umts", OFONO_NETREG_TECH_UMTS },
     { "hspa", OFONO_NETREG_TECH_HSPA },
-    { "lte",  OFONO_NETREG_TECH_LTE }
+    { "lte",  OFONO_NETREG_TECH_LTE },
+    { "nr",   OFONO_NETREG_TECH_NR }
 };
 
 static const OfonoNameIntMap ofono_netreg_tech_map = {
